@@ -1,3 +1,8 @@
+:root {
+    --primary: #00b460;
+    --secondary: #336acf;
+  }
+
 #questions {
     display: none
 }
@@ -5,3 +10,38 @@
 #score {
     display: none;
 }
+
+header {
+    background-color: var(--primary);
+    display: flex;
+    margin: 10px;
+    padding: 10px;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  .countdown {
+    display: flex;
+    justify-content:left;
+  }
+
+  header p {
+    display: flex;
+    justify-content: center;
+  }
+
+  body {
+    background-color: var(--secondary);
+    margin: 20px;
+    padding: 5pz;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+    align-items: center;
+  }
+  .btn {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+  }
