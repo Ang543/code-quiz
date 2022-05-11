@@ -34,14 +34,24 @@ header {
   body {
     background-color: var(--secondary);
     margin: 20px;
-    padding: 5pz;
+    padding: 5px;
     display: flex;
     flex-direction: column;
     justify-content:space-between;
     align-items: center;
   }
-  .btn {
+
+#container-start {
+    text-align: center;
+}
+
+#container-questions {
+    text-align: center;
+    display: none;
+}
+
+  /* .btn {
       display: flex;
       flex-direction: column;
       justify-content: center;
-  }
+  } */
