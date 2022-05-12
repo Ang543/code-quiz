@@ -3,7 +3,9 @@ let time = startingMinutes * 60;
 // let time = 5;
 const countdownEl = document.getElementById('countdown');
 
-setInterval(updateCountdown, 1000);
+setInterval(1000);
+
+
 
 function updateCountdown() {
     const minutes = Math.floor(time / 60);
@@ -18,4 +20,14 @@ function updateCountdown() {
     if (time < 0) { //stop the setInterval when time = 0 to avoid negative time
         countdownEl.innerHTML = 0;
     }
-}
+};
+
+// document.querySelector('.btn').addEventListener("click",()=>{
+//     updateCountdown();
+// })
+
+startBtn.addEventListener("click", ()=>{
+
+updateCountdown();
+
+})
