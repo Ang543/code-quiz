@@ -2,7 +2,7 @@ var startBtn = document.querySelector("#startBtn");
 var welcome = document.querySelector("#welcome");
 var questions = document.querySelector("#questions");
 var score = document.querySelector("#score");
-
+var scoreCount = 0;
 
 var controlNumber = 0;
 
@@ -89,19 +89,16 @@ var questionsArray = [
     },
 ]
 
-const displayQuestion = () => {
-    welcome.style.display = "none"
-    questions.style.display = "block";
-    changeQuestion()
-}
+
 
 const checkAnswer = (event) => {
 
     // checking if what they clicked is correct
     console.log(event.target.textContent);
 
-    if(event.target.textContent == questionsArray[controlNumber].correct) {
+    if (event.target.textContent == questionsArray[controlNumber].correct) {
         alert("Correct!")
+        scoreCount++;
     } else {
         alert("Incorrect!")
     }
@@ -111,7 +108,7 @@ const checkAnswer = (event) => {
 }
 
 const changeQuestion = () => {
-    if(controlNumber < questionsArray.length) {
+    if (controlNumber < questionsArray.length) {
         var questionText = document.querySelector("#question-text");
         var option1 = document.querySelector("#option-1");
         var option2 = document.querySelector("#option-2");
@@ -128,22 +125,34 @@ const changeQuestion = () => {
         option2.addEventListener("click", checkAnswer)
         option3.addEventListener("click", checkAnswer)
         option4.addEventListener("click", checkAnswer)
-        
+
     } else {
-        alert("You finished the quiz!")
-        questions.style.display = "none";
-        score.style.display = "block";
+        endQuiz();
     }
 }
 
-// Timer Functionality
+function endQuiz(){
+    alert("You finished the quiz!")
+    questions.style.display = "none";
+    score.style.display = "block";
+    quizEnding();
+    document.querySelector("#scoreCount").textContent = scoreCount;
+}
 
+// // let timeTest = 10
+
+// // let time = 5
 // const startingMinutes = 2;
-// let time = startingMinutes * 60;
+// let time = startingMinutes //* 60;
 // // let time = 5;
-// const countdownEl = document.getElementById('countdown');
+// let countdownEl = document.getElementById('countdown');
 
-// setInterval(1000);
+// var globalInterval;
+
+// function startBtnEventListener() {
+//     globalInterval = setInterval(1000)
+// }
+
 
 // function updateCountdown() {
 //     const minutes = Math.floor(time / 60);
@@ -151,14 +160,49 @@ const changeQuestion = () => {
 
 //     seconds = seconds < 10 ? `0` + seconds : seconds;
 
-//     countdownEl.innerHTML = 
-//     `${minutes}:${seconds}`;
+//     countdownEl.innerHTML =
+//         `${minutes}:${seconds}`;
 //     time--;
 
 //     if (time < 0) { //stop the setInterval when time = 0 to avoid negative time
 //         countdownEl.innerHTML = 0;
 //     }
+// };
+
+
+
+// function countdownTimer() {
+//     timeTest--;
+//     countdownEl.textContent = timeTest
+
+// }
+
+
+// function updateCountdown() {setInterval(countdownTimer(), 1000)
+// }
+
+const displayQuestion = () => {
+
+    welcome.style.display = "none"
+    questions.style.display = "block";
+    changeQuestion()
+    startBtnEventListener()
+}
+
+// // document.querySelector('.btn').addEventListener("click",()=>{
+// //     updateCountdown();
+// // })
+
+// // startBtn.addEventListener("click", ()=>{
+
+// // updateCountdown();
+
+// // })
+
+// // could also be an if statement in different function if not its own function
+// function quizEnding() {
+//     clearinterval(globalInterval)
 // }
 
 startBtn.addEventListener("click", displayQuestion)
-
+// startBtn.addEventListener("click", updateCountdown)

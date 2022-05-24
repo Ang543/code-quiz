@@ -3,8 +3,11 @@ let time = startingMinutes * 60;
 // let time = 5;
 const countdownEl = document.getElementById('countdown');
 
-setInterval(1000);
+var globalInterval;
 
+function startBtnEventListener() {
+globalInterval = setInterval(updateCountdown,1000)
+}
 
 
 function updateCountdown() {
@@ -19,6 +22,7 @@ function updateCountdown() {
 
     if (time < 0) { //stop the setInterval when time = 0 to avoid negative time
         countdownEl.innerHTML = 0;
+        endQuiz();
     }
 };
 
@@ -26,8 +30,13 @@ function updateCountdown() {
 //     updateCountdown();
 // })
 
-startBtn.addEventListener("click", ()=>{
+// startBtn.addEventListener("click", ()=>{
 
-updateCountdown();
+// updateCountdown();
 
-})
+// })
+
+// could also be an if statement in different function if not its own function
+function quizEnding() {
+    clearInterval(globalInterval)
+    }
